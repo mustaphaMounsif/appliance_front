@@ -70,6 +70,7 @@ export class CreatePovComponent implements OnInit {
 
   onSubmit(){
     this.savePov();
+    console.log(this.savePov());
   }
 
 test(date:any){
