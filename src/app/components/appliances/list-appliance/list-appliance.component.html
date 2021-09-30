@@ -1,0 +1,60 @@
+
+<button class="btn btn-secondary" (click)="onCreate()">add-appliance</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>libelle</th>
+            <th>dbid</th>
+            <th>reference</th>
+            <th>type</th>
+            <th colspan="3">action</th>
+        </tr>
+    </thead> 
+    <tbody>
+        <tr *ngFor="let appliance of appliances">
+            <td>{{appliance.libelleApplliance}}</td>
+            <td>{{appliance.dbid}}</td>
+            <td>{{appliance.reference}}</td>
+            <td>{{appliance.libelleType}}</td>
+            <td>
+                <button (click)="detail(appliance.id_appliance)" class="btn btn-default btn-sm">Details</button> 
+                <button (click)="updateAppliance(appliance)" class="btn btn-info btn-sm">Update</button>
+                <button (click)="deleteAppliance(appliance.id_appliance)" class="btn btn-danger btn-sm" 
+                    style="margin-left: 10px;" [disabled]="!appliance.disponibilitte">Delete</button>
+            </td>
+        </tr>
+    </tbody>   
+</table>
+
+<div class="row" [hidden]="!showDetails">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Libelle</th>
+                    <th>Date Debut</th>
+                    <th>Date Fin</th>
+                    <th>Description</th>
+                    <th>Analyse Cybersecurity</th>
+                    <th>compteManager</th>
+                    <th>ingenieur Cybersecurity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pov of povs">
+                    <td><button (click)="clientDetail(pov.id_client)" class="btn btn-default btn-sm">{{pov.libelleClient}}</button></td>
+                    <td><button (click)="povDetail(pov.id_pov)" class="btn btn-default btn-sm">{{pov.libellePov}}</button></td>
+                    <td>{{pov.dateDebut | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{pov.dateFin | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{pov.description}}</td>
+                    <td>{{pov.analyseCyber}}</td>
+                    <td>{{pov.compteManager}}</td>
+                    <td>{{pov.ingenieurCyber}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

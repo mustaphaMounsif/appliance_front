@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-12">
+
+        
+    <p >LibelleClient : {{client.libelleClient}}</p> 
+    <p>secteur : {{client.secteur}}</p>
+     <p>activite : {{client.activite}}</p> 
+      
+    </div>
+</div>
+    <h2 class="text-center card-title"> Contact : </h2>
+    <table class="table  table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Fonction</th>
+                <th>Email</th>
+                <th>Telephone</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr  *ngFor="let contact of contacts">
+                <td>{{contact.nom}}</td>
+                <td>{{contact.prenom}}</td>
+                <td>{{contact.telephone}}</td>
+                <td>{{contact.fonction}}</td>
+                <td>{{contact.email}}</td>
+            </tr> 
+        </tbody>
+    </table>
+
+

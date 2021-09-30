@@ -1,0 +1,9 @@
+<div>
+    <div class="content-container">
+       <button class="btn btn-default btn-sm" (click)="closeDialog()" style="margin-left: 300px;">X</button><br/>
+        <span class="content-span full-width">{{data.message}}</span>
+    </div>
+    <hr>
+    <button class="btn btn-danger btn-sm" [mat-dialog-close]=true>Yes</button>
+    <button class="btn btn-primary btn-sm" style="margin-left: 10px;" [mat-dialog-close]=false>No</button>
+</div>

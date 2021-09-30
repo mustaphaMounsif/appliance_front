@@ -1,0 +1,32 @@
+ <button class="btn btn-secondary" (click)="onCreate()">add-suivi</button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Montant</th>
+                        <th>Compte Rendu</th>
+                        <th>Offer Commercial</th>
+                        <th>Type Prestation</th>
+                       
+                        <th colspan="2">action</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <tr *ngFor="let suivi of suivis">
+                        <td>{{suivi.montant}}</td>
+                        <td>{{suivi.compteRendu}}</td>
+                        <td>{{suivi.offerCommercial}}</td>
+                        <td>{{suivi.libellePerstation}}</td>
+                      
+                        <td>
+                           <button (click)="updateSuivi(suivi)" class="btn btn-info btn-sm">update</button>
+                             <button (click)="deleteSuivi(suivi.id_suivi)" class="btn btn-danger btn-sm" style="margin-left: 10px;">delete</button>
+                    
+                        </td>
+                    </tr>
+                </tbody>   
+            </table>
+
+
+
+
+

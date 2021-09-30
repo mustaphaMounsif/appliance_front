@@ -1,0 +1,27 @@
+<p>Pov : {{pov.libellePov}}</p>
+<p>analyse Cyber :  {{pov.analyseCyber}}</p>
+<p>ingenieur Cyber : {{pov.ingenieurCyber}}</p>
+<p>description : {{pov.description}}</p>
+<p> date Debut : {{pov.dateDebut | date: 'dd/MM/yyyy'}}</p>
+<p> date Fin : {{pov.dateFin | date: 'dd/MM/yyyy'}}</p>
+<p> compte Manager : {{pov.compteManager}}</p>
+<p> Client : {{pov.libelleClient}}</p>
+
+<h2 class="text-center card-title"> Sceance : </h2>
+    <table class="table  table-striped">
+        <thead>
+            <tr>
+                <th>Date de Sceance</th>
+                <th>Resumer</th>
+                <th>List de Participants</th>
+               
+            </tr>
+         </thead>
+         <tbody>
+            <tr  *ngFor="let sceance of sceances">
+                <td>{{sceance.dateSceance}}</td>
+                <td>{{sceance.resumer}}</td>
+                <td>{{sceance.participants}}</td>
+            </tr>
+        </tbody>
+    </table>

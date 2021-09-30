@@ -1,0 +1,29 @@
+<button class="btn btn-secondary" (click)="onCreate()">add-contact</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Telephone</th>
+            <th>Fonction</th>
+            <th>Email</th>
+            <th>client</th>
+            <th colspan="2">action</th>
+        </tr>
+    </thead> 
+    <tbody>
+        <tr *ngFor="let contact of contacts ">
+            <td>{{contact.nom}}</td>
+            <td>{{contact.prenom}}</td>
+            <td>{{contact.telephone}}</td>
+            <td>{{contact.fonction}}</td>
+            <td>{{contact.email}}</td>
+            <td>{{contact.libelleClient}}</td>
+            <td>
+                <button  (click)="updateContact(contact)" class="btn btn-info btn-sm">Update</button>
+                <button  (click)="deleteContact(contact.id_contact)" class="btn btn-danger btn-sm"  style="margin-left: 10px;">delete</button>
+            </td>
+        </tr>
+    </tbody>   
+</table>
+

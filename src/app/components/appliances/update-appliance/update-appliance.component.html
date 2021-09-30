@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+            <div class="col-md-12">
+                    <h3 >Update  Appliance</h3>
+                   <form (ngSubmit)="onSubmit()">
+
+                           <div class="form-group">  
+                                   <label for="">Libelle: </label>
+                                   <input type="text" id="libelleApplliance" [(ngModel)]="appliance.libelleApplliance" name="libelleApplliance" class="form-control">
+                           </div>  
+
+                           <div class="form-group">  
+                                   <label>DBID: </label>
+                                   <input type="text" id="dbid" [(ngModel)]="appliance.dbid" name="dbid" class="form-control">
+                           </div>
+
+                           <div class="form-group">  
+                                   <label>Reference: </label>
+                                   <input type="text" id="reference" [(ngModel)]="appliance.reference" name="reference" class="form-control" >
+                           </div>
+
+                           <div class="form-goup">
+                                <label >Type: </label>
+                                <select class="form-select" [(ngModel)]="appliance.id_type" [ngModelOptions]="{standalone: true}"> 
+                                        <option selected="selected" >--Select--</option>
+                                        <option *ngFor="let type of types" value="{{type.id_type}}">{{type.libelleType}}</option>
+                                </select>
+                        </div>
+
+                        <div class="form-group">  
+                                <label>Disponibilite  </label>
+                                <input type="radio" id="disponibilitte" [(ngModel)]="appliance.disponibilitte" value="true"
+                                        name="disponibilitte">
+                        </div>
+                           <div class="form-group">  
+                                   <button type="submit" class="btn btn-secondary btn-sm">submit</button>
+                                   <button type="reset" class="btn btn-danger btn-sm" style="float: right;">reset</button>
+                           </div>       
+                   </form>
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+

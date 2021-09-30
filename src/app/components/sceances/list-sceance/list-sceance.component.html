@@ -1,0 +1,25 @@
+<button class="btn btn-secondary" (click)="onCreate()">add-sceances</button> 
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Date Sceance</th>
+                        <th>Resumer</th>
+                        <th>Participants</th>
+                        
+                        <th colspan="2">action</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <tr *ngFor="let sceance of sceances">
+                        <td>{{sceance.dateSceance | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{sceance.resumer}}</td>
+                        <td>{{sceance.participants}}</td>
+                        
+                        <td>
+                           <button (click)="updateSceance(sceance)" class="btn btn-info btn-sm">update</button>
+                          <button (click)="deleteSceance(sceance.id_sceance)" class="btn btn-danger btn-sm" style="margin-left: 10px;">delete</button>
+                            
+                        </td>
+                    </tr>
+                </tbody>   
+            </table>

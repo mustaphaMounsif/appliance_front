@@ -1,0 +1,20 @@
+    <button class="btn btn-secondary" (click)="onCreate()">add-typePrestation</button> 
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Libelle Type</th>
+                        <th colspan="2">action</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <tr *ngFor="let pre of prestations">
+                        <td>{{pre.libellePerstation}}</td>
+                        
+                        <td>
+                            <button (click)="updateTypePrestation(pre)" class="btn btn-info btn-sm">update</button>
+                           <button (click)="deleteTypePrestation(pre.id_perstation)" class="btn btn-danger btn-sm" style="margin-left: 10px;">delete</button>
+                        
+                        </td>
+                    </tr>
+                </tbody>   
+            </table>

@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+            <div class="col-md-12">
+                    <h3 >Update Pov</h3>
+                   <form (ngSubmit)="onSubmit()">
+
+                           <div class="form-group">  
+                                   <label for="">Libelle Pov: </label>
+                                   <input type="text" id="libellePov" [(ngModel)]="pov.libellePov" name="libellePov" class="form-control">
+                           </div> 
+                           
+                            <div class="form-group">  
+                                <label for="">Analyse Cyber: </label>
+                                <input type="text" id="analyseCyber" [(ngModel)]="pov.analyseCyber" name="analyseCyber" class="form-control">
+                            </div> 
+
+                            <div class="form-group">  
+                                <label for="">Ingenieur Cyber: </label>
+                                <input type="text" id="ingenieurCyber" [(ngModel)]="pov.ingenieurCyber" name="ingenieurCyber" class="form-control">
+                            </div> 
+
+                            <div class="form-group">  
+                                <label for="">Description: </label>
+                                <input type="text" id="description" [(ngModel)]="pov.description" name="description" class="form-control">
+                            </div> 
+
+                            <div class="form-group">  
+                                <label for="">Date Debut : </label>
+                                <input type="date" id="dateDebut" [(ngModel)]="pov.dateDebut" name="dateDebut" class="form-control">
+                            </div> 
+
+                            <div class="form-group">  
+                                <label for="">Date Fin : </label>
+                                <input type="date" id="dateFin" [(ngModel)]="pov.dateFin" name="dateFin" class="form-control">
+                            </div> 
+                           
+                            <div class="form-group">  
+                                <label for="">Compte Manager : </label>
+                                <input type="text" id="compteManager" [(ngModel)]="pov.compteManager" name="compteManager" class="form-control">
+                            </div>
+                            
+                            <div class="form-goup">
+                                <label >appliances: </label>
+                                <select class="form-select" [(ngModel)]="pov.id_appliance" [ngModelOptions]="{standalone: true}"> 
+                                        <option selected="selected" >--Select--</option>
+                                        <option *ngFor="let appliance of appliances" value="{{appliance.id_appliance}}">{{appliance.libelleApplliance}}</option>
+                                </select>
+                        </div>
+
+                        <div class="form-goup">
+                            <label >clients: </label>
+                            <select class="form-select" [(ngModel)]="pov.id_client" [ngModelOptions]="{standalone: true}"> 
+                                    <option selected="selected" >--Select--</option>
+                                    <option *ngFor="let client of clients" value="{{client.id_client}}">{{client.libelleClient}}</option>
+                            </select>
+                    </div><br>
+
+                           <div class="form-group">  
+                                   <button type="submit" class="btn btn-primary btn-sm">submit</button>
+                                   <button type="reset" class="btn btn-danger btn-sm" style="float: right;">reset</button>
+                           </div>       
+                        </form>
+            </div>
+    </div>
+</div>
+

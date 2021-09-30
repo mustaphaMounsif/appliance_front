@@ -1,0 +1,37 @@
+
+<button class="btn btn-secondary" (click)="onCreate()">add-Pov</button>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Libelle Pov</th>
+            <th>Analyse Cyber</th>
+            <th>Ingenieur Cyber</th>
+            <th>Description</th>
+            <th>date Debut</th>
+            <th>date Fin</th>
+            <th>Compte Manager</th>
+            <th>libelle Applliance</th>
+            <th>libelle Client</th>
+            <th colspan="2">action</th>
+        </tr>
+    </thead> 
+    <tbody>
+        <tr *ngFor="let pov of povs ">
+            <td>{{pov.libellePov}}</td>
+            <td>{{pov.analyseCyber}}</td>
+            <td>{{pov.ingenieurCyber}}</td>
+            <td>{{pov.description}}</td>
+            <td>{{pov.dateDebut | date: 'dd/MM/yyyy'}}</td>
+            <td>{{pov.dateFin | date: 'dd/MM/yyyy'}}</td>
+            <td>{{pov.compteManager}}</td>
+            <td>{{pov.libelleApplliance}}</td>
+            <td>{{pov.libelleClient}}</td>
+            <td>
+               <button (click)='updatePov(pov)' class="btn btn-info btn-sm">update</button>
+               <button (click)='deletePov(pov.id_pov)' class="btn btn-danger btn-sm" style="margin-left: 10px;">delete</button>
+            </td>
+        </tr>
+    </tbody>   
+</table>
+

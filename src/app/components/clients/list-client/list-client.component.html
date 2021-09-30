@@ -1,0 +1,23 @@
+
+<button class="btn btn-secondary" (click)="onCreate()">add-client</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Libelle Client</th>
+            <th>secteur</th>
+            <th>Activite</th>
+            <th colspan="2">action</th>
+        </tr>
+    </thead> 
+    <tbody>
+        <tr *ngFor="let client of clients">
+            <td>{{client.libelleClient}}</td>
+            <td>{{client.secteur}}</td>
+            <td>{{client.activite}}</td>
+            <td>
+            <button  (click)="updateClient(client)" class="btn btn-info btn-sm">Update</button>
+            <button  (click)="deleteClient(client.id_client)" class="btn btn-danger btn-sm"  style="margin-left: 10px;">delete</button>
+            </td>
+        </tr>
+    </tbody>   
+</table>
