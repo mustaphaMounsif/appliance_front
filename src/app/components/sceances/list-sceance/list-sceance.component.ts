@@ -14,6 +14,9 @@ import { UpdateSceanceComponent } from '../update-sceance/update-sceance.compone
 export class ListSceanceComponent implements OnInit {
 
   sceances:Sceance[];
+  page:number=1;
+  totalRecords:string; 
+
 
   constructor(private sceanceService:SceanceService,
               private dialog:MatDialog,
@@ -64,5 +67,14 @@ this.confirmation.openConfirmDialog('Êtes-vous sûr de supprimer cet Enregistre
   }
 })
 }
+
+// oreder by
+key:string='dateSceance';
+reverse:boolean=false;
+sort(key){
+  this.key=key;
+  this.reverse = !this.reverse;
+}
+
 
 }

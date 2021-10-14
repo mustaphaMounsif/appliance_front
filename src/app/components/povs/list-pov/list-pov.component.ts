@@ -13,7 +13,9 @@ import { UpdatePovComponent } from '../update-pov/update-pov.component';
 })
 export class ListPovComponent implements OnInit {
 
-  povs:Pov[];
+  povs:Pov[]; 
+  page:number=1;
+  totalRecords:string; 
 
   constructor( private povService:PovService,private dialog:MatDialog,private confirmation:ConfirmationService) { }
 
@@ -71,5 +73,24 @@ deletePov(id:number){
 
 }
 
+// oreder by
+key:string='libellePov';
+reverse:boolean=false;
+sort(key){
+  this.key=key;
+  this.reverse = !this.reverse;
+}
+
+// recherche
+libellePov:any;
+Search(){
+  if(this.libellePov == ""){
+    this.ngOnInit();
+  }else{
+    this.povs=this.povs.filter(res=>{
+      return res.libellePov.toLocaleLowerCase().match(this.libellePov.toLocaleLowerCase())
+    })
+  }
+}
 
 }

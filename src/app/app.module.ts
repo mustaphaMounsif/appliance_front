@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -35,8 +35,15 @@ import { UpdateTypePrestationComponent } from './components/typePrestations/upda
 import { ClientDetailComponent } from './components/details/client-detail/client-detail.component';
 import { PovDetailComponent } from './components/details/pov-detail/pov-detail.component';
 import { ConfirmationTypeComponent } from './components/types/confirmation-type/confirmation-type.component';
-
-
+import { DashboardComponent } from './components/povs/dashboard/dashboard.component';
+import { NgxPaginationModule } from "ngx-pagination";
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { KeycloakSecurityService } from './services/keycloak-security.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+export function kcFactory( kcSecurity:KeycloakSecurityService){
+  return ()=> kcSecurity.init();
+}
 
 @NgModule({
   declarations: [
@@ -69,6 +76,8 @@ import { ConfirmationTypeComponent } from './components/types/confirmation-type/
     ClientDetailComponent,
     PovDetailComponent,
     ConfirmationTypeComponent,
+    DashboardComponent,
+    
    
   ],
   imports: [
@@ -77,9 +86,15 @@ import { ConfirmationTypeComponent } from './components/types/confirmation-type/
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPaginationModule,
+    Ng2OrderModule,
+    Ng2SearchPipeModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [
+    {provide:APP_INITIALIZER,deps:[KeycloakSecurityService],useFactory:kcFactory,multi:true}
+  ],
   bootstrap: [AppComponent],
   entryComponents:[CreateApplianceComponent,UpdateApplianceComponent,ConfirmationTypeComponent],
   

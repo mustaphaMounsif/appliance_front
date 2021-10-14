@@ -1,16 +1,30 @@
+<h1 class="text-muted">List Clients</h1>
 
-<button class="btn btn-secondary" (click)="onCreate()">add-client</button>
-<table class="table table-striped">
-    <thead>
+<div class="row">
+    <div class="col-sm-4">
+        <input type="text" class="form-control" name="libelleClient" [(ngModel)]="libelleClient" (ngModelChange)="Search()" placeholder="Entrez Libelle Client pour rechercher">
+    </div>
+
+    <div class="col-sm-4">
+        <button class="btn btn-secondary" (click)="onCreate()">add-client</button>
+    </div>
+
+</div>
+<table class="table table-hover">
+    <thead class="table-success">
         <tr>
-            <th>Libelle Client</th>
+            <th (click)="sort('libelleClient')">Libelle Client &nbsp;<i class="fa fa-sort"></i></th>
             <th>secteur</th>
             <th>Activite</th>
             <th colspan="2">action</th>
         </tr>
-    </thead> 
+    </thead>  
     <tbody>
-        <tr *ngFor="let client of clients">
+        <tr *ngFor="let client of clients| paginate:{id : 'listing_pagination',
+        itemsPerPage:5,
+        currentPage: page,
+        totalItems:totalRecords} | orderBy: key: reverse ">
+
             <td>{{client.libelleClient}}</td>
             <td>{{client.secteur}}</td>
             <td>{{client.activite}}</td>
@@ -21,3 +35,6 @@
         </tr>
     </tbody>   
 </table>
+<div> 
+    <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+</div>

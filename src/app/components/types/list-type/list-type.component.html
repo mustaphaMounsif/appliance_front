@@ -1,25 +1,46 @@
-<button class="btn btn-secondary" (click)="onCreate()">add-type</button>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Libelle Type</th>
-                        <th colspan="2">action</th>
-                    </tr>
-                </thead> 
-                <tbody>
-                    <tr *ngFor="let type of types">
-                        <td>{{type.libelleType}}</td>
-                        
-                        <td>
-                            <button (click)="updateType(type)" class="btn btn-info btn-sm">update</button>
-                            <button (click)="deleteType(type.id_type)" class="btn btn-danger btn-sm" style="margin-left: 10px;">delete</button>
-                        
-                        </td>
-                    </tr>
-                </tbody>   
-            </table>
+<div class="tbl">
+   <div class="container row">
+       <div class="col-md-12">
 
-            
+        <h1 class="text-muted">List Types</h1>
 
+        <div class="row">
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="libelleType" [(ngModel)]="libelleType" (ngModelChange)="Search()" placeholder="Entrez Libelle Type pour rechercher">
+            </div>
+
+            <div class="col-sm-4">
+                <button class="btn btn-secondary" (click)="onCreate()">add-type</button>
+            </div>
+
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead class="table-success">
+                <tr>
+                    <th (click)="sort('libelleType')"> Libelle Type &nbsp;<i class="fa fa-sort"></i></th>
+                    <th colspan="2">action</th>
+                </tr>
+            </thead> 
+            <tbody>
+                <tr *ngFor="let type of types| paginate:{id : 'listing_pagination',
+                itemsPerPage:5,
+                currentPage: page,
+                totalItems:totalRecords} | orderBy: key: reverse ">
+                    <td>{{type.libelleType}}</td>
+                    
+                    <td>
+                        <button (click)="updateType(type)" class="btn btn-info btn-sm">update</button>
+                        <button (click)="deleteType(type.id_type)" class="btn btn-danger btn-sm" style="margin-left: 10px;">delete</button>
+                    
+                    </td>
+                </tr>
+            </tbody>   
+        </table> 
+        <div> 
+            <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+        </div>     
+       </div>
+   </div>
+</div>
 
 

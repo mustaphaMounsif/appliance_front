@@ -6,7 +6,9 @@
       <li class="nav-item">
         <a routerLink="appliances" routerLinkActive="active" class="nav-link active"> Home</a>
       </li>
-     
+              <li class="nav-item">
+                <a routerLink="dashboard" routerLinkActive="active" class="nav-link "> Dashboard</a>
+              </li>
               <li class="nav-item">
                 <a routerLink="types" routerLinkActive="active" class="nav-link "> Types</a>
               </li>
@@ -29,19 +31,21 @@
               <li class="nav-item">
                 <a routerLink="typePrestations" routerLinkActive="active" class="nav-link "> typePrestations</a>
               </li>
- 
-        
-    </ul>
+            </ul>
 
-    
-
-  </nav>
- 
-
-
-<div class="text-center">
-<h1>Gestion de POV</h1>
-</div>
+                <ul class="navbar-nav ml-auto" id="nav">
+              <li ngbDropdown  class="nav-item dropdown ">
+                  <a href="#" (click)="false"  ngbDropdownToggle class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"> 
+                    <span *ngIf="securityService.isLoggedIn()">
+                     {{nomPrenom}}
+                    </span>
+                  </a>
+                  <div ngbDropdownMenu class="dropdown-menu" >
+                    <button ngbDropdownItem class="dropdown-item" (click)="onLogout()">logout</button>
+                  </div>
+               </li>
+              </ul>  
+  </nav><br><br> 
 
 <router-outlet></router-outlet>
 

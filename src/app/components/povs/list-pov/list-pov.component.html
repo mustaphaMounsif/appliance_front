@@ -1,10 +1,20 @@
+<h1 class="text-muted">List Pov</h1>
 
-<button class="btn btn-secondary" (click)="onCreate()">add-Pov</button>
+<div class="row">
+    <div class="col-sm-4">
+        <input type="text" class="form-control" name="libellePov" [(ngModel)]="libellePov" (ngModelChange)="Search()" placeholder="Entrez Libelle Pov pour rechercher">
+    </div>
 
-<table class="table table-striped">
-    <thead>
+    <div class="col-sm-4">
+        <button class="btn btn-secondary" (click)="onCreate()" >add-pov</button>
+    </div>
+
+</div>
+
+<table class="table table-hover">
+    <thead class="table-success">
         <tr>
-            <th>Libelle Pov</th>
+            <th (click)="sort('libellePov')">Libelle Pov &nbsp;<i class="fa fa-sort"></i></th>
             <th>Analyse Cyber</th>
             <th>Ingenieur Cyber</th>
             <th>Description</th>
@@ -13,11 +23,18 @@
             <th>Compte Manager</th>
             <th>libelle Applliance</th>
             <th>libelle Client</th>
+            
             <th colspan="2">action</th>
         </tr>
     </thead> 
     <tbody>
-        <tr *ngFor="let pov of povs ">
+        
+        <tr *ngFor="let pov of povs | paginate:{id : 'listing_pagination',
+        itemsPerPage:5,
+        currentPage: page,
+        totalItems:totalRecords} | orderBy: key: reverse ">
+
+            
             <td>{{pov.libellePov}}</td>
             <td>{{pov.analyseCyber}}</td>
             <td>{{pov.ingenieurCyber}}</td>
@@ -27,11 +44,17 @@
             <td>{{pov.compteManager}}</td>
             <td>{{pov.libelleApplliance}}</td>
             <td>{{pov.libelleClient}}</td>
+            
             <td>
                <button (click)='updatePov(pov)' class="btn btn-info btn-sm">update</button>
                <button (click)='deletePov(pov.id_pov)' class="btn btn-danger btn-sm" style="margin-left: 10px;">delete</button>
             </td>
+        
         </tr>
+   
     </tbody>   
 </table>
+<div> 
+    <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+</div>
 

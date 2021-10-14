@@ -23,6 +23,8 @@ export class ListApplianceComponent implements OnInit {
   povs:Pov[];
   showDetails:boolean = false;
   client:Client;
+  page:number=1;
+  totalRecords:string; 
 
   constructor(private applianceService:ApplianceService,
     private clientService:ClientService,
@@ -101,6 +103,25 @@ deleteAppliance(id:number){
 
 }
 
+// oreder by
+key:string='libelleApplliance';
+reverse:boolean=false;
+sort(key){
+  this.key=key;
+  this.reverse = !this.reverse;
+}
 
+// recherche
+libelleApplliance:any;
+Search(){
+  if(this.libelleApplliance == ""){
+    this.ngOnInit();
+  }else{
+    this.appliances=this.appliances.filter(res=>{
+      return res.libelleApplliance.toLocaleLowerCase().match(this.libelleApplliance.toLocaleLowerCase())
+    })
+  }
+}
+ 
 
 }

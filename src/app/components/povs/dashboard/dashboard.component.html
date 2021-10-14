@@ -1,0 +1,64 @@
+<h1 class="text-muted">Dashboard</h1>
+<div class="col-md-3">
+<input type="text" class="form-control" name="libellePov" [(ngModel)]="libellePov" (ngModelChange)="Search()" placeholder="Entrez Libelle Pov pour rechercher">
+</div>
+<table class="table table-hover">
+    <thead  class="table-primary">
+        <tr > 
+            <th (click)="sort('libellePov')">Libelle Pov &nbsp;<i class="fa fa-sort"></i></th>
+            <th>Analyse Cyber</th>
+            <th>Ingenieur Cyber</th>
+            <th>Description</th>
+            <th>date Debut</th>
+            <th>date Fin</th>
+            <th>Compte Manager</th>
+            <th>offer Comercial</th>
+            <th>Status</th> 
+        </tr>
+    </thead> 
+    <tbody>
+        
+       
+        <tr *ngFor="let pov of povs | paginate:{id : 'listing_pagination',
+        itemsPerPage:5,
+        currentPage: page,
+        totalItems:totalRecords} | orderBy: key: reverse ">
+
+            <td>{{pov.libellePov}}</td>
+            <td>{{pov.analyseCyber}}</td>
+            <td>{{pov.ingenieurCyber}}</td>
+            <td>{{pov.description}}</td>
+            <td>{{pov.dateDebut | date: 'dd/MM/yyyy'}}</td>
+            <td>{{pov.dateFin | date: 'dd/MM/yyyy'}}</td>
+            <td>{{pov.compteManager}}</td>  
+            <td>{{pov.offerCommercial}}</td>
+            <td *ngIf="pov.status && pov.offerCommercial">
+                <button class="btn btn-success">Fin Acc</button>
+            </td>
+            <td *ngIf="pov.status && !pov.offerCommercial">
+                <button class="btn btn-danger">Archives</button>
+            </td>
+            <td *ngIf="!pov.status">
+                <button class="btn btn-warning" (click)='infoPov(pov.id_pov)'>En Cours</button>                    
+            </td>     
+        </tr>
+    </tbody>   
+</table>
+<div> 
+    <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+</div>
+
+<ng-template #showPovInfo let-data let-ref="dialogRef" >
+    <h2 class="text-primary">Information Pov</h2>
+        <div class="row">
+          <div class="col-md-12">
+            <label >Date Debut: {{ data.dateDebut | date: 'dd/MM/yyyy'}} </label><br/><br/>
+            <label >Date Fin: {{ data.dateFin | date: 'dd/MM/yyyy'}} </label><br/><br/>
+            <label >Nomber Sceance: {{ data.nbrSeance}} </label><br/><br/>
+          </div>
+        </div>
+     
+  </ng-template>
+ 
+  
+  

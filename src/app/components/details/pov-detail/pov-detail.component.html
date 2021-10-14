@@ -1,27 +1,45 @@
-<p>Pov : {{pov.libellePov}}</p>
-<p>analyse Cyber :  {{pov.analyseCyber}}</p>
-<p>ingenieur Cyber : {{pov.ingenieurCyber}}</p>
-<p>description : {{pov.description}}</p>
-<p> date Debut : {{pov.dateDebut | date: 'dd/MM/yyyy'}}</p>
-<p> date Fin : {{pov.dateFin | date: 'dd/MM/yyyy'}}</p>
-<p> compte Manager : {{pov.compteManager}}</p>
-<p> Client : {{pov.libelleClient}}</p>
+<div class="container">
+    <div class="row">
+       <div class="col-md-4">
+        <h2 class="text-center card-title"> Pov : </h2>
+            <label> Pov: </label><br>
+            <input type="text" id="libellePov" [(ngModel)]="pov.libellePov" name="libellePov" class="form-control" readonly>
+            <label> Analyse Cyber: </label><br>
+            <input type="text" id="analyseCyber" [(ngModel)]="pov.analyseCyber" name="analyseCyber" class="form-control" readonly>
+            <label> Ingenieur Cyber: </label><br>
+            <input type="text" id="ingenieurCyber" [(ngModel)]="pov.ingenieurCyber" name="ingenieurCyber" class="form-control" readonly>
+            <label> Description: </label><br>
+            <input type="text" id="description" [(ngModel)]="pov.description" name="description" class="form-control" readonly>
+            <label> Date Debut: </label><br>
+            <input type="text" id="dateDebut" [(ngModel)]="pov.dateDebut" name="dateDebut" class="form-control" readonly>
+            <label> Date Fin: </label><br>
+            <input type="text" id="dateFin" [(ngModel)]="pov.dateFin" name="dateFin" class="form-control" readonly>
+            <label> Compte Manager: </label><br>
+            <input type="text" id="compteManager" [(ngModel)]="pov.compteManager" name="compteManager" class="form-control" readonly>
+            <label> Libelle Client: </label><br>
+            <input type="text" id="libelleClient" [(ngModel)]="pov.libelleClient" name="libelleClient" class="form-control" readonly>
+        </div>
 
-<h2 class="text-center card-title"> Sceance : </h2>
-    <table class="table  table-striped">
-        <thead>
-            <tr>
-                <th>Date de Sceance</th>
-                <th>Resumer</th>
-                <th>List de Participants</th>
-               
-            </tr>
-         </thead>
-         <tbody>
-            <tr  *ngFor="let sceance of sceances">
-                <td>{{sceance.dateSceance}}</td>
-                <td>{{sceance.resumer}}</td>
-                <td>{{sceance.participants}}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="col-md-8"> 
+
+            <h2 class="text-center card-title"> Sceances : </h2>
+                <table class="table  table-bordered">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>Date de Sceance</th>
+                            <th>Resumer</th>
+                            <th>List de Participants</th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let sceance of sceances">
+                            <td>{{sceance.dateSceance}}</td>
+                            <td>{{sceance.resumer}}</td>
+                            <td>{{sceance.participants}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>            
+</div>

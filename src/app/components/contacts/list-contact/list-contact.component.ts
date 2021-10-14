@@ -14,6 +14,8 @@ import { UpdateContactComponent } from '../update-contact/update-contact.compone
 export class ListContactComponent implements OnInit {
 
   contacts:Contact[];
+  page:number=1;
+  totalRecords:string;
 
   constructor(private contactService:ContactService,
               private dialog:MatDialog,
@@ -69,5 +71,27 @@ deleteContact(id:number){
   })
 
 }
+
+// oreder by
+key:string='nom';
+reverse:boolean=false;
+sort(key){
+  this.key=key;
+  this.reverse = !this.reverse;
+}
+
+// recherche
+nom:any;
+Search(){
+  if(this.nom == ""){
+    this.ngOnInit();
+  }else{
+    this.contacts=this.contacts.filter(res=>{
+      return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase())
+    })
+  }
+}
+
+
 
 }

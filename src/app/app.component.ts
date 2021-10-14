@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { KeycloakSecurityService } from './services/keycloak-security.service';
 
 
 
@@ -7,6 +8,20 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+ nomPrenom:string;
+  
+ constructor(private securityService:KeycloakSecurityService){
+
+  }
   title = 'gestion-pov';
+  ngOnInit(): void {
+    
+    this.nomPrenom=KeycloakSecurityService.getFullName();
+  }
+
+  onLogout(){
+    KeycloakSecurityService.logout();
+  }
+
 }

@@ -14,6 +14,8 @@ import { UpdateTypePrestationComponent } from '../update-type-prestation/update-
 export class ListTypePrestationsComponent implements OnInit {
 
   prestations:TypePrestation[];
+  page:number=1;
+  totalRecords:string; 
 
   constructor(private typePrestationService:TypePrestationService,
               private dialog:MatDialog,
@@ -61,4 +63,25 @@ export class ListTypePrestationsComponent implements OnInit {
       }
     })
   }
+
+  // oreder by
+  key:string='libellePerstation';
+  reverse:boolean=false;
+  sort(key){
+    this.key=key;
+    this.reverse = !this.reverse;
+  }
+
+  // recherche
+  libellePerstation:any;
+Search(){
+  if(this.libellePerstation == ""){
+    this.ngOnInit();
+  }else{
+    this.prestations=this.prestations.filter(res=>{
+      return res.libellePerstation.toLocaleLowerCase().match(this.libellePerstation.toLocaleLowerCase())
+    })
+  }
+}
+
 }

@@ -16,6 +16,10 @@ import { UpdateTypeComponent } from '../update-type/update-type.component';
 export class ListTypeComponent implements OnInit {
 
   types:TypeApp[];
+  page:number=1;
+  totalRecords:string; 
+
+
   constructor(private typeService:TypeService,private dialog:MatDialog,private confirmation:ConfirmationService) { }
 
   ngOnInit(): void {
@@ -61,6 +65,26 @@ this.confirmation.openConfirmDialog('Êtes-vous sûr de supprimer cet Enregistre
     });
   }
 });
+}
+
+// oreder by
+key:string='libelleType';
+reverse:boolean=false;
+sort(key){
+  this.key=key;
+  this.reverse = !this.reverse;
+}
+
+// recherche
+libelleType:any;
+Search(){
+  if(this.libelleType == ""){
+    this.ngOnInit();
+  }else{
+    this.types=this.types.filter(res=>{
+      return res.libelleType.toLocaleLowerCase().match(this.libelleType.toLocaleLowerCase())
+    })
+  }
 }
 
 

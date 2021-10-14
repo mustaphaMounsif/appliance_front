@@ -1,22 +1,37 @@
- <button class="btn btn-secondary" (click)="onCreate()">add-suivi</button>
-            <table class="table table-striped">
-                <thead>
+<h1 class="text-muted">List Appliances</h1>
+
+<div class="row">
+    <div class="col-sm-4">
+        <input type="text" class="form-control" name="compteRendu" [(ngModel)]="compteRendu" (ngModelChange)="Search()" placeholder="Entrez Compte Rendu pour rechercher">
+    </div>
+
+    <div class="col-sm-4">
+        <button class="btn btn-secondary" (click)="onCreate()">add-suivi</button>
+    </div>
+
+</div>
+        <table class="table table-hover">
+                <thead class="table-success">
                     <tr>
+                        <th (click)="sort('libellePov')">Compte Rendu &nbsp;<i class="fa fa-sort"></i></th>
                         <th>Montant</th>
-                        <th>Compte Rendu</th>
                         <th>Offer Commercial</th>
                         <th>Type Prestation</th>
+                        <th>Libelle Pov</th>
                        
                         <th colspan="2">action</th>
                     </tr>
                 </thead> 
                 <tbody>
-                    <tr *ngFor="let suivi of suivis">
-                        <td>{{suivi.montant}}</td>
+                    <tr *ngFor="let suivi of suivis| paginate:{id : 'listing_pagination',
+                    itemsPerPage:5,
+                    currentPage: page,
+                    totalItems:totalRecords} | orderBy: key: reverse  ">
                         <td>{{suivi.compteRendu}}</td>
+                        <td>{{suivi.montant}}</td>
                         <td>{{suivi.offerCommercial}}</td>
                         <td>{{suivi.libellePerstation}}</td>
-                      
+                        <td>{{suivi.libellePov}}</td>
                         <td>
                            <button (click)="updateSuivi(suivi)" class="btn btn-info btn-sm">update</button>
                              <button (click)="deleteSuivi(suivi.id_suivi)" class="btn btn-danger btn-sm" style="margin-left: 10px;">delete</button>
@@ -25,7 +40,9 @@
                     </tr>
                 </tbody>   
             </table>
-
+            <div> 
+                <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+            </div>
 
 
 

@@ -14,6 +14,8 @@ import { UpdateClientComponent } from '../update-client/update-client.component'
 export class ListClientComponent implements OnInit {
 
   clients:Client[];
+  page:number=1;
+  totalRecords:string; 
 
   constructor(private clientService:ClientService,private dialog:MatDialog,private confirmation:ConfirmationService) { }
 
@@ -59,6 +61,27 @@ deleteClient(id:number){
     }
   });
   }
+
+  // oreder by
+  key:string='libelleClient';
+  reverse:boolean=false;
+  sort(key){
+    this.key=key;
+    this.reverse = !this.reverse;
+  }
+
+  // recherche
+  libelleClient:any;
+Search(){
+  if(this.libelleClient == ""){
+    this.ngOnInit();
+  }else{
+    this.clients=this.clients.filter(res=>{
+      return res.libelleClient.toLocaleLowerCase().match(this.libelleClient.toLocaleLowerCase())
+    })
+  }
+}
+
 
 
 }

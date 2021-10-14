@@ -35,4 +35,8 @@ export class PovService {
     return this.httpClient.get<Pov>(`${this.baseURL}/${id}`);
   }
 
+  getPovInfo(id:number):Observable<Pov>{
+    return this.httpClient.get<Pov>(`${this.baseURL}`+'/info/'+id);
+  }
+
 }

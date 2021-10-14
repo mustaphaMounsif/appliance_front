@@ -1,8 +1,10 @@
+<h1 class="text-muted">List Sceances</h1>
+
 <button class="btn btn-secondary" (click)="onCreate()">add-sceances</button> 
-            <table class="table table-striped">
-                <thead>
+            <table class="table table-hover">
+                <thead class="table-success">
                     <tr>
-                        <th>Date Sceance</th>
+                        <th (click)="sort('dateSceance')">Date Sceance &nbsp;<i class="fa fa-sort"></i></th>
                         <th>Resumer</th>
                         <th>Participants</th>
                         
@@ -10,7 +12,10 @@
                     </tr>
                 </thead> 
                 <tbody>
-                    <tr *ngFor="let sceance of sceances">
+                    <tr *ngFor="let sceance of sceances| paginate:{id : 'listing_pagination',
+                    itemsPerPage:5,
+                    currentPage: page,
+                    totalItems:totalRecords} | orderBy: key: reverse ">
                         <td>{{sceance.dateSceance | date: 'dd/MM/yyyy'}}</td>
                         <td>{{sceance.resumer}}</td>
                         <td>{{sceance.participants}}</td>
@@ -23,3 +28,6 @@
                     </tr>
                 </tbody>   
             </table>
+            <div> 
+                <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+            </div>

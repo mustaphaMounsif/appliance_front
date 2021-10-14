@@ -1,33 +1,46 @@
-<div class="row">
-    <div class="col-md-12">
 
-        
-    <p >LibelleClient : {{client.libelleClient}}</p> 
-    <p>secteur : {{client.secteur}}</p>
-     <p>activite : {{client.activite}}</p> 
-      
+ <div class="container">
+     <div class="row">
+        <div class="col-md-4">
+            <h2 class="text-center card-title"> Client : </h2>
+            <label> LibelleClient: </label><br>
+            <input type="text" id="libelleClient" [(ngModel)]="client.libelleClient" name="libelleClient" class="form-control" readonly>
+            <label> Secteur: </label><br>
+            <input type="text" id="secteur" [(ngModel)]="client.secteur" name="secteur" class="form-control" readonly>
+            <label> Activite: </label><br>
+            <input type="text" id="activite" [(ngModel)]="client.activite" name="activite" class="form-control" readonly>
+        </div>
+
+        <div class="col-md-8">
+            <h2 class="text-center card-title"> Contact : </h2><br>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Fonction</th>
+                            <th>Email</th>
+                            <th>Telephone</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr  *ngFor="let contact of contacts">
+                            <td>{{contact.nom}}</td>
+                            <td>{{contact.prenom}}</td>
+                            <td>{{contact.telephone}}</td>
+                            <td>{{contact.fonction}}</td>
+                            <td>{{contact.email}}</td>
+                        </tr> 
+                    </tbody>
+                </table>  
+        </div>
+
     </div>
 </div>
-    <h2 class="text-center card-title"> Contact : </h2>
-    <table class="table  table-striped">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Fonction</th>
-                <th>Email</th>
-                <th>Telephone</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr  *ngFor="let contact of contacts">
-                <td>{{contact.nom}}</td>
-                <td>{{contact.prenom}}</td>
-                <td>{{contact.telephone}}</td>
-                <td>{{contact.fonction}}</td>
-                <td>{{contact.email}}</td>
-            </tr> 
-        </tbody>
-    </table>
+
+           
+
+  
 
 

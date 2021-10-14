@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -21,6 +22,9 @@ export class UpdatePovComponent implements OnInit {
   appliances:Appliance[];
 
   clients:Client[];
+
+  maxDate:any;
+  minDate:any;
 
   constructor(
 
@@ -67,5 +71,14 @@ export class UpdatePovComponent implements OnInit {
     goToPovList(){
       this.router.navigate(['/povs'])
     }
+
+    test(date:any){
+      this.minDate=date.target.value;
+      
+      this.maxDate=new Date(this.minDate)
+      this.maxDate=new Date(this.maxDate.setMonth(this.maxDate.getMonth()+1))
+      
+      this.maxDate=formatDate(this.maxDate,'yyyy-MM-dd','en-US');
+      }    
 
 }

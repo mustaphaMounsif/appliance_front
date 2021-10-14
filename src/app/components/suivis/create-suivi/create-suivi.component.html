@@ -28,7 +28,7 @@
                            </div>
 
                            <div class="form-group">
-                                <label for="">Type Prestation:</label>
+                                <label for="">libelle Pov:</label>
                                 <select class="form-select" [(ngModel)]="suivi.id_pov" [ngModelOptions]="{standalone: true}"> 
                                         <option  >--Select--</option>
                                         <option *ngFor="let pov of povs" value="{{pov.id_pov}}">{{pov.libellePov}}</option>

@@ -26,17 +26,17 @@
 
                             <div class="form-group">  
                                 <label for="">Date Debut : </label>
-                                <input type="date" id="dateDebut" [(ngModel)]="pov.dateDebut" name="dateDebut" class="form-control">
+                                <input (change)="test($event)" type="date" id="dateDebut"  [(ngModel)]="pov.dateDebut" name="dateDebut" class="form-control">
                             </div> 
 
                             <div class="form-group">  
                                 <label for="">Date Fin : </label>
-                                <input type="date" id="dateFin" [(ngModel)]="pov.dateFin" name="dateFin" class="form-control">
+                                <input [min]="minDate" [max]="maxDate" type="date" id="dateFin" [(ngModel)]="pov.dateFin" name="dateFin" class="form-control">
                             </div> 
                            
                             <div class="form-group">  
                                 <label for="">Compte Manager : </label>
-                                <input type="text" id="compteManager" [(ngModel)]="pov.compteManager" name="compteManager" class="form-control">
+                                <input  type="text" id="compteManager" [(ngModel)]="pov.compteManager" name="compteManager" class="form-control">
                             </div>
                             
                             <div class="form-goup">

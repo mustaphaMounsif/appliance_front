@@ -24,7 +24,7 @@ export class CreatePovComponent implements OnInit {
   clients:Client[]; 
   maxDate:any;
   minDate:any;
-
+ 
   constructor(private povService:PovService,
               private applianceService:ApplianceService,
               private clientService:ClientService,
@@ -53,7 +53,7 @@ export class CreatePovComponent implements OnInit {
   savePov(){
     this.povService.createPov(this.pov).subscribe(
       data=>{
-        this.goToPovList();
+        //this.goToPovList();
         let currentUrl=this.router.url;
         this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
           this.router.navigate([currentUrl]);
@@ -70,7 +70,6 @@ export class CreatePovComponent implements OnInit {
 
   onSubmit(){
     this.savePov();
-    console.log(this.savePov());
   }
 
 test(date:any){

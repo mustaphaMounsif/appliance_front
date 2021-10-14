@@ -15,6 +15,8 @@ export class ListSuiviComponent implements OnInit {
 
   
   suivis:Suivi[];
+  page:number=1;
+  totalRecords:string; 
 
   constructor(private suiviService:SuiviService, private dialog:MatDialog,private confirmation:ConfirmationService) { }
 
@@ -66,6 +68,26 @@ deleteSuivi(id:number){
     }
   })
 
+}
+
+// oreder by
+key:string='compteRendu';
+reverse:boolean=false;
+sort(key){
+  this.key=key;
+  this.reverse = !this.reverse;
+}
+
+// recherche
+compteRendu:any;
+Search(){
+  if(this.compteRendu == ""){
+    this.ngOnInit();
+  }else{
+    this.suivis=this.suivis.filter(res=>{
+      return res.compteRendu.toLocaleLowerCase().match(this.compteRendu.toLocaleLowerCase())
+    })
+  }
 }
 
 

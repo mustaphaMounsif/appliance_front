@@ -13,6 +13,7 @@ import { UpdateContactComponent } from './components/contacts/update-contact/upd
 import { ClientDetailComponent } from './components/details/client-detail/client-detail.component';
 import { PovDetailComponent } from './components/details/pov-detail/pov-detail.component';
 import { CreatePovComponent } from './components/povs/create-pov/create-pov.component';
+import { DashboardComponent } from './components/povs/dashboard/dashboard.component';
 import { ListPovComponent } from './components/povs/list-pov/list-pov.component';
 import { UpdatePovComponent } from './components/povs/update-pov/update-pov.component';
 import { CreateSceanceComponent } from './components/sceances/create-sceance/create-sceance.component';
@@ -44,6 +45,7 @@ const routes: Routes = [
   {path:'create-pov',component:CreatePovComponent},
   {path:'update-pov/:id',component:UpdatePovComponent},
   {path:'povs/:id',component:PovDetailComponent},
+  {path:'dashboard',component:DashboardComponent},
 
   {path:'clients',component:ListClientComponent},
   {path:'create-client',component:CreateClientComponent},
